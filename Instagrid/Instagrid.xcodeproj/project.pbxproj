@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9328491C249A2F4400D35733 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9328491B249A2F4400D35733 /* Delm-Medium.otf */; };
+		9328491E249A2F5300D35733 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9328491D249A2F5300D35733 /* ThirstySoftRegular.otf */; };
+		938E92D42498DDB800CEE4C1 /* ShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E92D32498DDB800CEE4C1 /* ShareManager.swift */; };
+		938E92D82498DE1E00CEE4C1 /* Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E92D72498DE1E00CEE4C1 /* Composition.swift */; };
+		938E92DB2498E53900CEE4C1 /* CompositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E92DA2498E53900CEE4C1 /* CompositionView.swift */; };
 		93AD8DE2249521F900ECB824 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD8DE1249521F900ECB824 /* AppDelegate.swift */; };
 		93AD8DE4249521F900ECB824 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD8DE3249521F900ECB824 /* SceneDelegate.swift */; };
 		93AD8DE6249521F900ECB824 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD8DE5249521F900ECB824 /* ViewController.swift */; };
@@ -16,6 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9328491B249A2F4400D35733 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
+		9328491D249A2F5300D35733 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
+		938E92D32498DDB800CEE4C1 /* ShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareManager.swift; sourceTree = "<group>"; };
+		938E92D72498DE1E00CEE4C1 /* Composition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Composition.swift; sourceTree = "<group>"; };
+		938E92DA2498E53900CEE4C1 /* CompositionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionView.swift; sourceTree = "<group>"; };
 		93AD8DDE249521F900ECB824 /* Instagrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93AD8DE1249521F900ECB824 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93AD8DE3249521F900ECB824 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +77,8 @@
 		93AD8DF52495220D00ECB824 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9328491D249A2F5300D35733 /* ThirstySoftRegular.otf */,
+				9328491B249A2F4400D35733 /* Delm-Medium.otf */,
 				93AD8DEF249521FA00ECB824 /* Info.plist */,
 				93AD8DEA249521FA00ECB824 /* Assets.xcassets */,
 				93AD8DEC249521FA00ECB824 /* LaunchScreen.storyboard */,
@@ -80,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				93AD8DE7249521F900ECB824 /* Main.storyboard */,
+				938E92DA2498E53900CEE4C1 /* CompositionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -95,6 +108,8 @@
 		93AD8DF92495228200ECB824 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				938E92D32498DDB800CEE4C1 /* ShareManager.swift */,
+				938E92D72498DE1E00CEE4C1 /* Composition.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -159,6 +174,8 @@
 			files = (
 				93AD8DEE249521FA00ECB824 /* LaunchScreen.storyboard in Resources */,
 				93AD8DEB249521FA00ECB824 /* Assets.xcassets in Resources */,
+				9328491E249A2F5300D35733 /* ThirstySoftRegular.otf in Resources */,
+				9328491C249A2F4400D35733 /* Delm-Medium.otf in Resources */,
 				93AD8DE9249521F900ECB824 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,9 +187,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				938E92DB2498E53900CEE4C1 /* CompositionView.swift in Sources */,
+				938E92D82498DE1E00CEE4C1 /* Composition.swift in Sources */,
 				93AD8DE6249521F900ECB824 /* ViewController.swift in Sources */,
 				93AD8DE2249521F900ECB824 /* AppDelegate.swift in Sources */,
 				93AD8DE4249521F900ECB824 /* SceneDelegate.swift in Sources */,
+				938E92D42498DDB800CEE4C1 /* ShareManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
