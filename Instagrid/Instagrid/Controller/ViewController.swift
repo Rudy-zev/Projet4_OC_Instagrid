@@ -35,13 +35,13 @@ class ViewController: UIViewController {
         buttonCompo3.imageView?.isHidden = false
         
         //Création du geste pour le swipe
-        let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(switchComposition(_: )))
+        let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpComposition(_: )))
         upSwipe.direction = .up
         
         view.addGestureRecognizer(upSwipe)
     }
     
-    @objc func switchComposition(_ sender: UISwipeGestureRecognizer) {
+    @objc func swipeUpComposition(_ sender: UISwipeGestureRecognizer) {
         if sender.state == .ended {
             share()
         }
