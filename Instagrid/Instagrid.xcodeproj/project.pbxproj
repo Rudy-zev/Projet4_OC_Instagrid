@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9328491C249A2F4400D35733 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9328491B249A2F4400D35733 /* Delm-Medium.otf */; };
 		9328491E249A2F5300D35733 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9328491D249A2F5300D35733 /* ThirstySoftRegular.otf */; };
+		932B7C1D249C083500462724 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932B7C1C249C083500462724 /* Extentions.swift */; };
 		938E92D42498DDB800CEE4C1 /* ShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E92D32498DDB800CEE4C1 /* ShareManager.swift */; };
 		938E92D82498DE1E00CEE4C1 /* Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E92D72498DE1E00CEE4C1 /* Composition.swift */; };
 		938E92DB2498E53900CEE4C1 /* CompositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E92DA2498E53900CEE4C1 /* CompositionView.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		9328491B249A2F4400D35733 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
 		9328491D249A2F5300D35733 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
+		932B7C1C249C083500462724 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		938E92D32498DDB800CEE4C1 /* ShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareManager.swift; sourceTree = "<group>"; };
 		938E92D72498DE1E00CEE4C1 /* Composition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Composition.swift; sourceTree = "<group>"; };
 		938E92DA2498E53900CEE4C1 /* CompositionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				93AD8DE5249521F900ECB824 /* ViewController.swift */,
+				932B7C1C249C083500462724 /* Extentions.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				93AD8DE2249521F900ECB824 /* AppDelegate.swift in Sources */,
 				93AD8DE4249521F900ECB824 /* SceneDelegate.swift in Sources */,
 				938E92D42498DDB800CEE4C1 /* ShareManager.swift in Sources */,
+				932B7C1D249C083500462724 /* Extentions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -33,8 +33,35 @@ class ViewController: UIViewController {
         buttonCompo1.imageView?.isHidden = true
         buttonCompo2.imageView?.isHidden = true
         buttonCompo3.imageView?.isHidden = false
+        
+        //Création du geste pour le swipe
+        let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(switchComposition(_: )))
+        upSwipe.direction = .up
+        
+        view.addGestureRecognizer(upSwipe)
     }
     
+    @objc func switchComposition(_ sender: UISwipeGestureRecognizer) {
+        if sender.state == .ended {
+            share()
+        }
+    }
+    
+    private func convertViewToImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: compositionView.bounds.size)
+        let image = renderer.image { ctx in compositionView.drawHierarchy(in: compositionView.bounds, afterScreenUpdates: true) }
+        
+        return image
+    }
+    
+    private func share() {
+        //Permet le share avec ce qu'on veux envoyer
+        let activityVC = UIActivityViewController(activityItems: [convertViewToImage()], applicationActivities: nil)
+        //Permet l'affichage de la pop up de selection
+        activityVC.popoverPresentationController?.sourceView = self.view
+        self.present(activityVC, animated: true, completion: nil)
+    }
+
     //Change composition style and button composition style
     @IBAction func pressButtonCompo1() {
         buttonCompo1.imageView?.isHidden = false
@@ -91,42 +118,6 @@ class ViewController: UIViewController {
         
         showImagePickerController()
     }
-    
-    public func switchComposition() {
-        
-    }
-    
-    public func swipeShare() {
-        
-    }
-    
-    public func share() {
-        
-    }
 }
 
-//Permet l'affichage du choix de la photo dans la librairy
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func showImagePickerController() {
-        let imagePickerControler = UIImagePickerController()
-        imagePickerControler.delegate = self
-        //Permet la modification de l'image après la selection
-        imagePickerControler.allowsEditing = true
-        //Permet de choisir la source de la photo
-        imagePickerControler.sourceType = .photoLibrary
-        present(imagePickerControler, animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        //Récuperation de la photo choisi
-        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            picSelected.image = editedImage
-        }else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            picSelected.image = originalImage
-        }
-        
-        //Close the picker after select a image
-        dismiss(animated: true, completion: nil)
-    }
-}
 
