@@ -10,11 +10,17 @@ import UIKit
 
 class CompositionView: UIView {
     
+    //Pic view outlet for disable if we want
+    @IBOutlet weak var picView1: UIView!
+    @IBOutlet weak var picView2: UIView!
+    @IBOutlet weak var picView3: UIView!
+    @IBOutlet weak var picView4: UIView!
+    
     enum StyleCompo {
         case style1, style2, style3
     }
     
-    var styleCompo: StyleCompo = .style1 {
+    var styleCompo: StyleCompo = .style3 {
         didSet{
             setStyleCompo(styleCompo)
         }
@@ -23,11 +29,20 @@ class CompositionView: UIView {
     public func setStyleCompo(_ styleCompo: StyleCompo) {
         switch styleCompo{
         case .style1:
-            backgroundColor = #colorLiteral(red: 0.05878440291, green: 0.4433942437, blue: 0.636279285, alpha: 1)
+            picView1.isHidden = false
+            picView2.isHidden = true
+            picView3.isHidden = false
+            picView4.isHidden = false
         case .style2:
-            backgroundColor = #colorLiteral(red: 0.05878440291, green: 0.4433942437, blue: 0.636279285, alpha: 1)
+            picView1.isHidden = false
+            picView2.isHidden = false
+            picView3.isHidden = false
+            picView4.isHidden = true
         case .style3:
-            backgroundColor = #colorLiteral(red: 0.05878440291, green: 0.4433942437, blue: 0.636279285, alpha: 1)
+            picView1.isHidden = false
+            picView2.isHidden = false
+            picView3.isHidden = false
+            picView4.isHidden = false
         }
     }
     

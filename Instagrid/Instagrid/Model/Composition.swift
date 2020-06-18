@@ -10,6 +10,4 @@ import Foundation
 
 class Composition {
    var allPicture = [0]
-    
-
 }
