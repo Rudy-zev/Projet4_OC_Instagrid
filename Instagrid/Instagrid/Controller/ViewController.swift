@@ -13,13 +13,15 @@ class ViewController: UIViewController {
     
     var composition =  Composition()
     
+    var animation = Animation.shared
+    
     @IBOutlet weak var compositionView: CompositionView!
     
-    //Button choice composition style
+    // Button choice composition style
     @IBOutlet weak var buttonCompo1: UIButton!
     @IBOutlet weak var buttonCompo2: UIButton!
     @IBOutlet weak var buttonCompo3: UIButton!
-    //ImgView for insert picture select
+    // ImgView for insert picture select
     @IBOutlet weak var pic1: UIImageView!
     @IBOutlet weak var pic2: UIImageView!
     @IBOutlet weak var pic3: UIImageView!
@@ -30,11 +32,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        buttonCompo1.imageView?.isHidden = true
-        buttonCompo2.imageView?.isHidden = true
-        buttonCompo3.imageView?.isHidden = false
+        buttonCompoManagement(button: .type3)
         
-        //Création du geste pour le swipe
+        // Création du geste pour le swipe
         let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpComposition(_: )))
         upSwipe.direction = .up
         
@@ -43,10 +43,33 @@ class ViewController: UIViewController {
     
     @objc func swipeUpComposition(_ sender: UISwipeGestureRecognizer) {
         if sender.state == .ended {
-            share()
+            compositionViewAnimationSend()
         }
     }
     
+    // Animation de la vue composition lors de l'envoi
+    private func compositionViewAnimationSend() {
+        UIView.animate(withDuration: TimeInterval(animation.duration),
+                       delay: 0,
+                       animations: {
+            self.compositionView.transform = CGAffineTransform(translationX: 0, y: -self.view.bounds.height)
+        }) { (success) in
+            if success {
+                self.share()
+            }
+        }
+    }
+    
+    // Animation de la vue composition lors de la fin de la selection ou l'annulation
+    private func compositionViewAnimationEnd() {
+        UIView.animate(withDuration: TimeInterval(animation.duration),
+                        delay: 0,
+                        animations: {
+                        self.compositionView.transform = CGAffineTransform(translationX: 0, y: 0)
+        })
+    }
+    
+    // Permet la conertion de compositionView vers une UIImage (TODO Possible de le mettre dans les extention)
     private func convertViewToImage() -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: compositionView.bounds.size)
         let image = renderer.image { ctx in compositionView.drawHierarchy(in: compositionView.bounds, afterScreenUpdates: true) }
@@ -55,37 +78,41 @@ class ViewController: UIViewController {
     }
     
     private func share() {
-        //Permet le share avec ce qu'on veux envoyer
+        // Permet le share avec ce qu'on veux envoyer
         let activityVC = UIActivityViewController(activityItems: [convertViewToImage()], applicationActivities: nil)
-        //Permet l'affichage de la pop up de selection
+        // Permet l'affichage de la pop up de selection
         activityVC.popoverPresentationController?.sourceView = self.view
+        
+        // Gestion du declanchement de l'animation suite à la selection ou l'annulation dans la pop up share
+        activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            if !completed {
+                self.compositionViewAnimationEnd()
+                return
+            }
+            self.compositionViewAnimationEnd()
+        }
+
         self.present(activityVC, animated: true, completion: nil)
     }
 
-    //Change composition style and button composition style
+    // Change composition style and button composition style
     @IBAction func pressButtonCompo1() {
-        buttonCompo1.imageView?.isHidden = false
-        buttonCompo2.imageView?.isHidden = true
-        buttonCompo3.imageView?.isHidden = true
+        buttonCompoManagement(button: .type1)
         compositionView.styleCompo = .style1
     }
     
     @IBAction func pressButtonCompo2() {
-        buttonCompo1.imageView?.isHidden = true
-        buttonCompo2.imageView?.isHidden = false
-        buttonCompo3.imageView?.isHidden = true
+        buttonCompoManagement(button: .type2)
         compositionView.styleCompo = .style2
     }
     
     @IBAction func pressButtonCompo3() {
-        buttonCompo1.imageView?.isHidden = true
-        buttonCompo2.imageView?.isHidden = true
-        buttonCompo3.imageView?.isHidden = false
+        buttonCompoManagement(button: .type3)
         compositionView.styleCompo = .style3
     }
     
 
-    //Press button for add picture
+    // Press button for add picture
     @IBAction func pressAddPic1() {
         addPicture(pic: 1)
     }
@@ -117,6 +144,37 @@ class ViewController: UIViewController {
         }
         
         showImagePickerController()
+    }
+    
+    private func buttonCompoManagement(button: ButtonCompoSelect) {
+        switch button {
+        case .type1:
+            buttonCompo1.imageView?.isHidden = false
+            buttonCompo2.imageView?.isHidden = true
+            buttonCompo3.imageView?.isHidden = true
+            buttonCompo1.isUserInteractionEnabled = false
+            buttonCompo2.isUserInteractionEnabled = true
+            buttonCompo3.isUserInteractionEnabled = true
+        case .type2:
+            buttonCompo1.imageView?.isHidden = true
+            buttonCompo2.imageView?.isHidden = false
+            buttonCompo3.imageView?.isHidden = true
+            buttonCompo1.isUserInteractionEnabled = true
+            buttonCompo2.isUserInteractionEnabled = false
+            buttonCompo3.isUserInteractionEnabled = true
+        case .type3:
+            buttonCompo1.imageView?.isHidden = true
+            buttonCompo2.imageView?.isHidden = true
+            buttonCompo3.imageView?.isHidden = false
+            buttonCompo1.isUserInteractionEnabled = true
+            buttonCompo2.isUserInteractionEnabled = true
+            buttonCompo3.isUserInteractionEnabled = false
+        }
+        
+    }
+    
+    enum ButtonCompoSelect {
+        case type1, type2, type3
     }
 }
 

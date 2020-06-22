@@ -16,6 +16,9 @@ class CompositionView: UIView {
     @IBOutlet weak var picView3: UIView!
     @IBOutlet weak var picView4: UIView!
     
+    @IBOutlet weak var pic1: UIImageView!
+    @IBOutlet weak var pic3: UIImageView!
+    
     enum StyleCompo {
         case style1, style2, style3
     }
