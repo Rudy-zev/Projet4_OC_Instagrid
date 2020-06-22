@@ -37,22 +37,49 @@ class ViewController: UIViewController {
         // Création du geste pour le swipe
         let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpComposition(_: )))
         upSwipe.direction = .up
-        
         view.addGestureRecognizer(upSwipe)
+        
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeftComposition(_: )))
+        leftSwipe.direction = .left
+        view.addGestureRecognizer(leftSwipe)
     }
     
     @objc func swipeUpComposition(_ sender: UISwipeGestureRecognizer) {
-        if sender.state == .ended {
-            compositionViewAnimationSend()
+        // Vérifie que le téléphone est en mode portrait
+        if UIDevice.current.orientation == .portrait {
+            if sender.state == .ended {
+                       compositionViewAnimationSendUp()
+                   }
         }
     }
     
+    @objc func swipeLeftComposition(_ sender: UISwipeGestureRecognizer) {
+         // Vérifie que le téléphone est en mode portrait
+         if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
+             if sender.state == .ended {
+                        compositionViewAnimationSendLeft()
+                    }
+         }
+     }
+    
     // Animation de la vue composition lors de l'envoi
-    private func compositionViewAnimationSend() {
+    private func compositionViewAnimationSendUp() {
         UIView.animate(withDuration: TimeInterval(animation.duration),
                        delay: 0,
                        animations: {
             self.compositionView.transform = CGAffineTransform(translationX: 0, y: -self.view.bounds.height)
+        }) { (success) in
+            if success {
+                self.share()
+            }
+        }
+    }
+    
+    private func compositionViewAnimationSendLeft() {
+        UIView.animate(withDuration: TimeInterval(animation.duration),
+                       delay: 0,
+                       animations: {
+            self.compositionView.transform = CGAffineTransform(translationX: -self.view.bounds.width, y: 0)
         }) { (success) in
             if success {
                 self.share()

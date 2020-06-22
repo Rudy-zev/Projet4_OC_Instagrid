@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: - Picker
 //Permet l'affichage du choix de la photo dans la librairy
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func showImagePickerController() {
