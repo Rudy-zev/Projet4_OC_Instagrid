@@ -138,7 +138,6 @@ class ViewController: UIViewController {
         compositionView.styleCompo = .style3
     }
     
-
     // Press button for add picture
     @IBAction func pressAddPic1() {
         addPicture(pic: 1)
