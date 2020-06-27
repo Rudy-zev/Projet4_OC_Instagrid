@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     
     @objc func swipeUpComposition(_ sender: UISwipeGestureRecognizer) {
         // Vérifie que le téléphone est en mode portrait
-        if UIDevice.current.orientation == .portrait {
+        if UIDevice.current.orientation != .landscapeLeft && UIDevice.current.orientation != .landscapeRight {
             if sender.state == .ended {
                        compositionViewAnimationSendUp()
                    }
