@@ -102,17 +102,9 @@ class ViewController: UIViewController {
         })
     }
     
-    // Permet la conertion de compositionView vers une UIImage (TODO Possible de le mettre dans les extention)
-    private func convertViewToImage() -> UIImage {
-        let renderer = UIGraphicsImageRenderer(size: compositionView.bounds.size)
-        let image = renderer.image { ctx in compositionView.drawHierarchy(in: compositionView.bounds, afterScreenUpdates: true) }
-        
-        return image
-    }
-    
     private func share() {
         // Permet le share avec ce qu'on veux envoyer
-        let activityVC = UIActivityViewController(activityItems: [convertViewToImage()], applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems: [convertViewToImage(view: compositionView)], applicationActivities: nil)
         // Permet l'affichage de la pop up de selection
         activityVC.popoverPresentationController?.sourceView = self.view
         

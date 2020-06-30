@@ -34,3 +34,14 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         dismiss(animated: true, completion: nil)
     }
 }
+
+// MARK: - Convert view to img 
+extension ViewController {
+    // Permet la conertion de compositionView vers une UIImage (TODO Possible de le mettre dans les extention)
+    func convertViewToImage(view: UIView) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
+        let image = renderer.image { ctx in view.drawHierarchy(in: view.bounds, afterScreenUpdates: true) }
+        
+        return image
+    }
+}
