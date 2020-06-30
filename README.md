@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/tamzi/ReadMe-MasterTemplates/master/art/readmemastertemplate.jpg" alt="ReadMe Master Templates" width=180 height=180>
+    <img src="https://raw.githubusercontent.com//Rudy-zev/Projet4_OC_Instagrid/blob/master/asset/iconInstagrid.png" alt="ReadMe Master Templates" width=180 height=180>
 <h3 align="center">PROJET 4 INSTAGRID</h3>
 
   <p align="center">
@@ -7,3 +7,4 @@
     <br>
     </p>
 </p>
+
