@@ -3,7 +3,7 @@
 <h3 align="center">PROJET 4 INSTAGRID</h3>
 
   <p align="center">
-    If you are working on your projects and using github, the README.md file is a useful starter place for you to write good and clear documentations for  your projects. Use this readMe roject to get started with your project's ReadMe.md file.
+    Application created for project number 4 of the OpenClassroom iOS program. This application which allows you to create a composition, on the basis of 3 predefined templates. With the possibility of sharing this composition or simply saving it with a swipe. The application can be used in portrait and landscape mode.
     <br>
     </p>
 </p>
