@@ -149,66 +149,37 @@ class ViewController: UIViewController {
     
     // Press button for add picture
     @IBAction func pressAddPic1() {
-        addPicture(pic: 1)
+        addPicture(pic: pic1)
     }
     
     @IBAction func pressAddPic2() {
-       addPicture(pic: 2)
+       addPicture(pic: pic2)
     }
     
     @IBAction func pressAddPic3() {
-        addPicture(pic: 3)
+        addPicture(pic: pic3)
     }
     
     @IBAction func pressAddPic4() {
-        addPicture(pic: 4)
+        addPicture(pic: pic4)
     }
 
-    public func addPicture(pic: Int) {
-        switch pic {
-        case 1:
-            picSelected = pic1
-            pic1.contentMode = .scaleAspectFill
-        case 2:
-            picSelected = pic2
-            pic2.contentMode = .scaleAspectFill
-        case 3:
-            picSelected = pic3
-            pic3.contentMode = .scaleAspectFill
-        case 4:
-            picSelected = pic4
-            pic4.contentMode = .scaleAspectFill
-        default:
-            break
-        }
-        
+    public func addPicture(pic: UIImageView) {
+    
+        picSelected = pic
+        pic.contentMode = .scaleAspectFill
+    
         showImagePickerController()
     }
     
     private func buttonCompoManagement(button: ButtonCompoSelect) {
-        switch button {
-        case .type1:
-            imgButtonCompo1.isHidden = false
-            imgButtonCompo2.isHidden = true
-            imgButtonCompo3.isHidden = true
-            buttonCompo1.isUserInteractionEnabled = false
-            buttonCompo2.isUserInteractionEnabled = true
-            buttonCompo3.isUserInteractionEnabled = true
-        case .type2:
-            imgButtonCompo1.isHidden = true
-            imgButtonCompo2.isHidden = false
-            imgButtonCompo3.isHidden = true
-            buttonCompo1.isUserInteractionEnabled = true
-            buttonCompo2.isUserInteractionEnabled = false
-            buttonCompo3.isUserInteractionEnabled = true
-        case .type3:
-            imgButtonCompo1.isHidden = true
-            imgButtonCompo2.isHidden = true
-            imgButtonCompo3.isHidden = false
-            buttonCompo1.isUserInteractionEnabled = true
-            buttonCompo2.isUserInteractionEnabled = true
-            buttonCompo3.isUserInteractionEnabled = false
-        }   
+        imgButtonCompo1.isHidden = button != .type1
+        imgButtonCompo2.isHidden = button != .type2
+        imgButtonCompo3.isHidden = button != .type3
+        buttonCompo1.isUserInteractionEnabled = button != .type1
+        buttonCompo2.isUserInteractionEnabled = button != .type2
+        buttonCompo3.isUserInteractionEnabled = button != .type3
+            
     }
     
     enum ButtonCompoSelect {

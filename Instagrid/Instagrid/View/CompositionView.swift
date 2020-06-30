@@ -32,23 +32,10 @@ class CompositionView: UIView {
     }
     
     public func setStyleCompo(_ styleCompo: StyleCompo) {
-        switch styleCompo{
-        case .style1:
-            picView1.isHidden = false
-            picView2.isHidden = true
-            picView3.isHidden = false
-            picView4.isHidden = false
-        case .style2:
-            picView1.isHidden = false
-            picView2.isHidden = false
-            picView3.isHidden = false
-            picView4.isHidden = true
-        case .style3:
-            picView1.isHidden = false
-            picView2.isHidden = false
-            picView3.isHidden = false
-            picView4.isHidden = false
-        }
+        picView1.isHidden = false
+        picView2.isHidden = styleCompo == .style1
+        picView3.isHidden = false
+        picView4.isHidden = styleCompo == .style2
     }
     
 }
