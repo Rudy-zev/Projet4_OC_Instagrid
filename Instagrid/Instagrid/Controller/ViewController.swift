@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         buttonCompoManagement(button: buttonCompoType)
         
-        // Création du geste pour le swipe
+        // Swipe gesture creation
         let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpComposition(_: )))
         upSwipe.direction = .up
         view.addGestureRecognizer(upSwipe)
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
     
     
     @objc func swipeUpComposition(_ sender: UISwipeGestureRecognizer) {
-        // Vérifie que le téléphone est en mode portrait
+        // Checks that the phone is in portrait mode
         if UIDevice.current.orientation != .landscapeLeft && UIDevice.current.orientation != .landscapeRight {
             if sender.state == .ended {
                        compositionViewAnimationSendUp()
@@ -60,7 +60,7 @@ class ViewController: UIViewController {
     }
     
     @objc func swipeLeftComposition(_ sender: UISwipeGestureRecognizer) {
-         // Vérifie que le téléphone est en mode portrait
+         // Check that the phone is in landscape mode
          if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
              if sender.state == .ended {
                         compositionViewAnimationSendLeft()
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
          }
      }
     
-    // Animation de la vue composition lors de l'envoi
+    // Animation of the composition view when sending
     private func compositionViewAnimationSendUp() {
         UIView.animate(withDuration: TimeInterval(animation.duration),
                        delay: 0,
@@ -93,7 +93,7 @@ class ViewController: UIViewController {
         }
     }
     
-    // Animation de la vue composition lors de la fin de la selection ou l'annulation
+    // Animation of the composition view at the end of the selection or cancellation
     private func compositionViewAnimationEnd() {
         UIView.animate(withDuration: TimeInterval(animation.duration),
                         delay: 0,
@@ -103,12 +103,12 @@ class ViewController: UIViewController {
     }
     
     private func share() {
-        // Permet le share avec ce qu'on veux envoyer
+        // Allow sharing with what we want to send
         let activityVC = UIActivityViewController(activityItems: [convertViewToImage(view: compositionView)], applicationActivities: nil)
-        // Permet l'affichage de la pop up de selection
+        // Allows the display of the selection pop-up
         activityVC.popoverPresentationController?.sourceView = self.view
         
-        // Gestion du declanchement de l'animation suite à la selection ou l'annulation dans la pop up share
+        // Management of the triggering of the animation following the selection or cancellation in the pop up share
         activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
             if !completed {
                 self.compositionViewAnimationEnd()

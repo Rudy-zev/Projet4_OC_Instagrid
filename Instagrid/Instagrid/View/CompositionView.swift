@@ -31,6 +31,7 @@ class CompositionView: UIView {
         }
     }
     
+    // Display management according to the user's choice
     public func setStyleCompo(_ styleCompo: StyleCompo) {
         picView1.isHidden = false
         picView2.isHidden = styleCompo == .style1

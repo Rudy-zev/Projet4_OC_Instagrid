@@ -9,20 +9,20 @@
 import UIKit
 
 // MARK: - Picker
-//Permet l'affichage du choix de la photo dans la librairy
+// Allows the display of the choice of photo in the library
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func showImagePickerController() {
         let imagePickerControler = UIImagePickerController()
         imagePickerControler.delegate = self
-        //Permet la modification de l'image après la selection
+        // Allows modification of the image after selection
         /*imagePickerControler.allowsEditing = true*/
-        //Permet de choisir la source de la photo
+        // Choose the source of the photo
         imagePickerControler.sourceType = .photoLibrary
         present(imagePickerControler, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        //Récuperation de la photo choisi
+        // Recovery of the selected photo
         /*if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             picSelected.image = editedImage
         }else */
@@ -30,15 +30,15 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             picSelected.image = originalImage
         }
         
-        //Close the picker after select a image
+        // Close the picker after select a image
         dismiss(animated: true, completion: nil)
     }
 }
 
 // MARK: - Convert view to img 
 extension ViewController {
-    // Permet la conertion de compositionView vers une UIImage (TODO Possible de le mettre dans les extention)
-    func convertViewToImage(view: UIView) -> UIImage {
+    // Allows conversion of View composition to a UIImage
+        func convertViewToImage(view: UIView) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
         let image = renderer.image { ctx in view.drawHierarchy(in: view.bounds, afterScreenUpdates: true) }
         
